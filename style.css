@@ -1,3 +1,7 @@
+body{
+    background: linear-gradient(rgb(187, 178, 178), rgb(146, 139, 139));
+}
+
 .cell{
     padding: 20px;
     border-color: rgb(146, 63, 63);
@@ -6,9 +10,43 @@
 }
 
 .alive{
-    background-color: black;
+    background-color: rgb(0, 0, 0);
 }
 
 .dead{
     background-color: rgb(255, 255, 255);
+}
+
+.btn{
+    font-size: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 2px ;
+}
+
+#grid{
+    margin: auto;
+    border-style: none;
+    /* border-width: 5px;
+    margin-top:0px; */
+}
+
+#button-container{
+    text-align: center;
+    margin-bottom: 0px;
+    padding-bottom: 2px;
+    /* border-style: dashed;
+    border-width: 5px; */
+}
+
+#instructions{
+    margin-top:4px;
+    margin-bottom:0px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    text-align: center;
+    font-size: 25px;
+     /* border-style: dashed;
+    border-width: 5px;  */
 }

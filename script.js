@@ -1,6 +1,7 @@
-let mapWidth = 20, mapHeight = 12;
+let mapWidth = 26, mapHeight = 12;
 
 let map = create2DArray(mapHeight, mapWidth);
+let isMouseDown = false;
 
 function create2DArray(rows, columns){
     newArray = new Array(rows);
@@ -14,20 +15,47 @@ function create2DArray(rows, columns){
 
 $(document).ready(function(){
     render();
-    $(document).on("click",".cell", function(){
-    //$(".cell").click(function(){
-        let row = $(this).parent().data("row");
-        let column = $(this).data("column");
-        //if(!running){
-            if($(this).attr("class")=="cell dead"){
-                (this).setAttribute("class", "cell alive");
-                map[row][column] = 1;
-            }else{
-                (this).setAttribute("class", "cell dead");
-                map[row][column] = 0;
+
+    $(document).on("mouseenter",".cell", function(){
+        if(isMouseDown){
+            let row = $(this).parent().data("row");
+            let column = $(this).data("column");
+                if($(this).attr("class")=="cell dead"){
+                    (this).setAttribute("class", "cell alive");
+                    map[row][column] = 1;
+                }else{
+                    (this).setAttribute("class", "cell dead");
+                    map[row][column] = 0;
+                }
             }
-       // }
     });
+
+
+    $(document).on("mousedown",".cell", function(){
+       // if(isMouseDown){
+            let row = $(this).parent().data("row");
+            let column = $(this).data("column");
+                if($(this).attr("class")=="cell dead"){
+                    (this).setAttribute("class", "cell alive");
+                    map[row][column] = 1;
+                }else{
+                    (this).setAttribute("class", "cell dead");
+                    map[row][column] = 0;
+                }
+           // }
+    });
+
+
+
+    $('body').mousedown(function() {
+        isMouseDown = true;
+        console.log("md");
+    })
+    .mouseup(function() {
+        isMouseDown = false;
+        console.log("mu");
+    });
+
     
     $("#start-button").click(function(){
             map = getNextGeneration();
@@ -41,6 +69,7 @@ $(document).ready(function(){
         clear();
         render();
     });
+
 
     function getNextGeneration(){
 
